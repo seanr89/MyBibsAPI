@@ -2,17 +2,20 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
-namespace YourNamespace
+namespace MyBibsAPI
 {
     [ApiController]
     [Route("api/[controller]")]
     public class ClubsController : ControllerBase
     {
         private readonly ClubService _clubService;
-        public ClubsController(ClubService clubService)
+        private readonly ILogger<ClubsController> _logger;
+        public ClubsController(ClubService clubService, ILogger<ClubsController> logger)
         {
             _clubService = clubService;
+            _logger = logger;
         }
+
         // GET: api/Clubs
         [HttpGet]
         public ActionResult<IEnumerable<Club>> GetClubs()
@@ -33,11 +36,20 @@ namespace YourNamespace
         }
 
         // POST: api/Clubs
-        [HttpPost]
-        public ActionResult<Club> PostClub(Club club)
+        [HttpPost("CreateClub")]
+        public ActionResult<Club> CreateClub(Club club)
         {
             var created = _clubService.AddClubAsync(club).Result;
             return CreatedAtAction(nameof(GetClub), new { id = created.Id }, club);
+        }
+
+        // POST: api/Clubs/5
+        [HttpPost("AddMemberToClub")]
+        public ActionResult<Club> AddMemberToClub(Member member)
+        {
+            // var created = _clubService.AddClubAsync(club).Result;
+            // return CreatedAtAction(nameof(GetClub), new { id = created.Id }, club);
+            throw new NotImplementedException();
         }
 
         // PUT: api/Clubs/5

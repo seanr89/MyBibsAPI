@@ -7,6 +7,7 @@ public static class DependencyInjection
         //     options.UseNpgsql(configuration.GetValue<string>("PostgresSettings:ConnectionString")));
 
         services.AddTransient<ClubService>();
+        services.AddTransient<MatchService>();
         return services;
     }
 }
