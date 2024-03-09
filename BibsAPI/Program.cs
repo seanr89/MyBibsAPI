@@ -3,13 +3,21 @@ using Microsoft.EntityFrameworkCore;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+IConfiguration configuration = new ConfigurationBuilder()
+                            .AddJsonFile("appsettings.json")
+                            .AddEnvironmentVariables()
+                            .Build();
+
+// Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseInMemoryDatabase("ClubList"));
 builder.Services.AddControllers();
-builder.Services.AddTransient<ClubService>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//DI Layer
+builder.Services.AddApplication(configuration);
 
 var app = builder.Build();
 
@@ -40,6 +48,8 @@ app.MapGet("/", () => "Hello World!")
 // })
 // .WithName("GetWeatherForecast")
 // .WithOpenApi();
+
+ServiceExtensions.RunDBMigration(builder.Services);
 
 app.UseRouting();
 app.UseEndpoints(endpoints =>

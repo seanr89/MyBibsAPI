@@ -27,4 +27,11 @@ public class ClubService
         await _dbContext.SaveChangesAsync();
         return club;
     }
+
+    public async Task<int> DeleteClubAsync(int id)
+    {
+        var club = await _dbContext.Clubs.FindAsync(id);
+        _dbContext.Clubs.Remove(club);
+        return await _dbContext.SaveChangesAsync();
+    }
 }

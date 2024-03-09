@@ -58,16 +58,15 @@ namespace YourNamespace
         // }
 
         // DELETE: api/Clubs/5
-        // [HttpDelete("{id}")]
-        // public IActionResult DeleteClub(int id)
-        // {
-        //     var club = clubs.Find(c => c.Id == id);
-        //     if (club == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     clubs.Remove(club);
-        //     return NoContent();
-        // }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteClub(int id)
+        {
+            var club = await _clubService.DeleteClubAsync(id);
+            if (club <= 0)
+            {
+                return NotFound();
+            }
+            return NoContent();
+        }
     }
 }
