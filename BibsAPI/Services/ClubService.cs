@@ -28,6 +28,13 @@ public class ClubService
         return club;
     }
 
+    public async Task<int> AddMemberToClub(Member member)
+    {
+        var club = await _dbContext.Clubs.FindAsync(member.ClubId);
+        club.Members.Add(member);
+        return await _dbContext.SaveChangesAsync();
+    }
+
     public async Task<int> DeleteClubAsync(int id)
     {
         var club = await _dbContext.Clubs.FindAsync(id);

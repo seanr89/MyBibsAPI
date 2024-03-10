@@ -47,9 +47,8 @@ namespace MyBibsAPI
         [HttpPost("AddMemberToClub")]
         public ActionResult<Club> AddMemberToClub(Member member)
         {
-            // var created = _clubService.AddClubAsync(club).Result;
-            // return CreatedAtAction(nameof(GetClub), new { id = created.Id }, club);
-            throw new NotImplementedException();
+            var created = _clubService.AddMemberToClub(member).Result;
+            return Ok("Member added to club");
         }
 
         // PUT: api/Clubs/5

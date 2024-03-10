@@ -6,5 +6,5 @@ public class Member
     public bool Active { get; set; }
     public string FirstName { get; set; }
     public string LastName { get; set; }
-    public Club Club { get; set; }
+    public int ClubId { get; set; }
 }
