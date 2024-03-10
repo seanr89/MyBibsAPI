@@ -45,7 +45,7 @@ namespace MyBibsAPI
 
         // POST: api/Clubs/5
         [HttpPost("AddMemberToClub")]
-        public ActionResult<Club> AddMemberToClub(Member member)
+        public async Task<IActionResult> AddMemberToClub(Member member)
         {
             var created = _clubService.AddMemberToClub(member).Result;
             return Ok("Member added to club");
