@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/[controller/[action]")]
+[Route("api/[controller]/[action]")]
 public class RandomizeController : ControllerBase
 {
     private readonly ILogger<RandomizeController> _logger;
