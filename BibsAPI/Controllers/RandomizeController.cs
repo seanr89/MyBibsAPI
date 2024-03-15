@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller/[action]")]
 public class RandomizeController : ControllerBase
 {
     private readonly ILogger<RandomizeController> _logger;
@@ -29,5 +29,11 @@ public class RandomizeController : ControllerBase
         game.TeamOne = randomizedPlayers.Take(randomizedPlayers.Count / 2).ToList();
         game.TeamTwo = randomizedPlayers.Skip(randomizedPlayers.Count / 2).ToList();
         return game;
+    }
+
+    [HttpPost]
+    public ActionResult<Game> CreateGame(string location, DateTime date)
+    {
+        throw new NotImplementedException();
     }
 }
