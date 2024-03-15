@@ -5,4 +5,5 @@ public class Club
     public string Name { get; set; }
     public DateTime DateCreated { get; set; }
     public ICollection<Member>? Members { get; set; } // Collection navigation containing dependents
+    public ICollection<Match>? Matches { get; set; } // Collection navigation containing dependents
 }
