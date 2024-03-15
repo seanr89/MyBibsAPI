@@ -10,9 +10,6 @@ IConfiguration configuration = new ConfigurationBuilder()
                             .Build();
 
 // Add services to the container.
-
-// builder.Services.AddDbContext<AppDbContext>(opt =>
-//     opt.UseInMemoryDatabase("ClubList"));
 builder.Services.AddControllers()
     .AddJsonOptions(options =>
         {
