@@ -11,11 +11,18 @@ public class RandomizeController : ControllerBase
         _logger = logger;
     }
 
-    // GET: api/Randomizer
+    /// <summary>
+    /// Basic/Crappy randomizer
+    /// </summary>
+    /// <param name="game"></param>
+    /// <returns></returns> <summary>
+    /// 
+    /// </summary>
+    /// <param name="game"></param>
+    /// <returns></returns>
     [HttpPost]
     public ActionResult<Game> RandomizePlayers(Game game)
     {
-        //var allPlayers = game.TeamOne.Concat(game.TeamTwo).ToList();
         var random = new Random();
         var randomizedPlayers = game.AllPlayers.OrderBy(p => random.Next()).ToList();
         game.AllPlayers = randomizedPlayers;

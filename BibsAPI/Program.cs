@@ -8,6 +8,10 @@ IConfiguration configuration = new ConfigurationBuilder()
                             .AddJsonFile("appsettings.json")
                             .AddEnvironmentVariables()
                             .Build();
+builder.Services.AddApplication(configuration);
+
+// Add health check flows
+builder.Services.AddHealthChecks();
 
 // Add services to the container.
 builder.Services.AddControllers()
@@ -19,7 +23,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //DI Layer
-builder.Services.AddApplication(configuration);
 
 var app = builder.Build();
 
