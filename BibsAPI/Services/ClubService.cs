@@ -43,7 +43,6 @@ public class ClubService
             return 0;
         }
         member.Club = club;
-        //club.Members.Add(member);
         try{
             _dbContext.Members.Add(member);
             return await _dbContext.SaveChangesAsync();

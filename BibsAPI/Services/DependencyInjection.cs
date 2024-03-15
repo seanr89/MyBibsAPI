@@ -10,6 +10,7 @@ public static class DependencyInjection
 
         services.AddTransient<ClubService>();
         services.AddTransient<MatchService>();
+        services.AddTransient<MemberService>();
         return services;
     }
 }
