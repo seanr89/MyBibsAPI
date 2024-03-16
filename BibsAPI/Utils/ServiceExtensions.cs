@@ -16,15 +16,15 @@ public static class ServiceExtensions
             var opt = provider.GetRequiredService<IOptions<PostgresSettings>>().Value;
 
 
-            Console.WriteLine($"RunDBMigration - Migrate: {opt.Migrate}");
-            Console.WriteLine($"RunDBMigration - SeedData: {opt.SeedData}");
-            Console.WriteLine($"RunDBMigration - ConnectionString: {opt.ConnectionString}");
+            // Console.WriteLine($"RunDBMigration - Migrate: {opt.Migrate}");
+            // Console.WriteLine($"RunDBMigration - SeedData: {opt.SeedData}");
+            // Console.WriteLine($"RunDBMigration - ConnectionString: {opt.ConnectionString}");
 
-            // if(opt.Migrate)
-            //     context.Database.Migrate();
+            if(opt.Migrate)
+                context.Database.Migrate();
 
-            // if(opt.SeedData)
-            //     DbSeeding.TryRunSeed(context).Wait();
+            if(opt.SeedData)
+                DbSeeding.TryRunSeed(context).Wait();
 
         }
         catch(Exception e)
