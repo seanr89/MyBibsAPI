@@ -8,4 +8,6 @@ public class Member
     public string LastName { get; set; }
     public int ClubId { get; set; } // Required foreign key property
     public Club? Club { get; set; } = null!; // Required reference navigation to principal
+
+    public string FullName() => $"{FirstName} {LastName}";
 }

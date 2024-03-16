@@ -6,9 +6,12 @@ using Microsoft.AspNetCore.Mvc;
 public class RandomizeController : ControllerBase
 {
     private readonly ILogger<RandomizeController> _logger;
-    public RandomizeController(ILogger<RandomizeController> logger)
+    private readonly ClubService _clubService;
+    public RandomizeController(ILogger<RandomizeController> logger,
+        ClubService clubService)
     {
         _logger = logger;
+        _clubService = clubService;
     }
 
     /// <summary>
@@ -16,10 +19,6 @@ public class RandomizeController : ControllerBase
     /// </summary>
     /// <param name="game"></param>
     /// <returns></returns> <summary>
-    /// 
-    /// </summary>
-    /// <param name="game"></param>
-    /// <returns></returns>
     [HttpPost]
     public ActionResult<Game> RandomizePlayers(Game game)
     {
@@ -32,8 +31,30 @@ public class RandomizeController : ControllerBase
     }
 
     [HttpPost]
-    public ActionResult<Game> CreateGame(string location, DateTime date)
+    public async Task<IActionResult> CreateBasicGame(CreateGameDTO gameDTO)
     {
-        throw new NotImplementedException();
+        var club = await _clubService.GetClubAsync(gameDTO.clubId);
+        if(club == null)
+        {
+            return NotFound();
+        }
+        var game = new Game(){
+            ClubId = gameDTO.clubId,
+            Location = gameDTO.location,
+            EventDate = gameDTO.date,
+            AllPlayers = new List<Player>()
+        };
+
+        foreach (var member in club?.Members?.Where(m => m.Active) ?? Enumerable.Empty<Member>())
+        {
+            Player player = new Player
+            {
+                Name = member.FullName(),
+                Rating = 50
+            };
+            game.AllPlayers.Add(player);
+        }
+
+        return Ok(game);
     }
 }
