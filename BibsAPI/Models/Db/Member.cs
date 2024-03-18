@@ -10,4 +10,11 @@ public class Member
     public Club? Club { get; set; } = null!; // Required reference navigation to principal
 
     public string FullName() => $"{FirstName} {LastName}";
+
+    public Member(string email, string firstName, string lastname)
+    {
+        Email = email;
+        FirstName = firstName;
+        LastName = lastname;
+    }
 }
