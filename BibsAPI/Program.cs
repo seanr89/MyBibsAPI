@@ -8,6 +8,10 @@ IConfiguration configuration = new ConfigurationBuilder()
                             .AddJsonFile("appsettings.json")
                             .AddEnvironmentVariables()
                             .Build();
+
+builder.Services.Configure<PostgresSettings>(
+                builder.Configuration.GetSection("PostgresSettings"));
+
 builder.Services.AddApplication(configuration);
 
 // Add health check flows
