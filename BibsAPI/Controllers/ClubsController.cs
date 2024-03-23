@@ -51,23 +51,6 @@ namespace MyBibsAPI
             return Ok("Member added to club");
         }
 
-        // PUT: api/Clubs/5
-        // [HttpPut("{id}")]
-        // public IActionResult PutClub(int id, Club club)
-        // {
-        //     if (id != club.Id)
-        //     {
-        //         return BadRequest();
-        //     }
-        //     var existingClub = clubs.Find(c => c.Id == id);
-        //     if (existingClub == null)
-        //     {
-        //         return NotFound();
-        //     }
-        //     existingClub.Name = club.Name; // Update other properties as needed
-        //     return NoContent();
-        // }
-
         // DELETE: api/Clubs/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteClub(int id)

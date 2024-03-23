@@ -22,6 +22,7 @@ public class RandomizeController : ControllerBase
     [HttpPost]
     public ActionResult<Game> RandomizePlayers(Game game)
     {
+        _logger.LogInformation("Randomizing players");
         var random = new Random();
         var randomizedPlayers = game.AllPlayers.OrderBy(p => random.Next()).ToList();
         game.AllPlayers = randomizedPlayers;
@@ -33,11 +34,11 @@ public class RandomizeController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateBasicGame(CreateGameDTO gameDTO)
     {
+        _logger.LogInformation("CreateBasicGame");
         var club = await _clubService.GetClubAsync(gameDTO.clubId);
         if(club == null)
-        {
-            return NotFound();
-        }
+            NotFound();
+
         var game = new Game(){
             ClubId = gameDTO.clubId,
             Location = gameDTO.location,
@@ -45,7 +46,7 @@ public class RandomizeController : ControllerBase
             AllPlayers = new List<Player>()
         };
 
-        foreach (var member in club?.Members?.Where(m => m.Active) ?? Enumerable.Empty<Member>())
+        foreach (var member in club?.Members?.Where(m => m.Active) ?? [])
         {
             Player player = new Player
             {

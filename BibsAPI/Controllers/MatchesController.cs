@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 [Route("api/[controller]")]
 public class MatchesController : ControllerBase
 {
-
     private readonly AppDbContext _dbContext;
     public MatchesController(AppDbContext dbContext)
     {

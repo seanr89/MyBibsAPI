@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/[controller]/[action]")]
 public class MembersController : ControllerBase{
 
     private readonly AppDbContext _dbContext;
@@ -15,6 +15,12 @@ public class MembersController : ControllerBase{
     // GET: api/Members
     [HttpGet]
     public ActionResult<IEnumerable<Member>> GetMembers()
+    {
+        return _dbContext.Members.Include(m => m.Club).ToList();
+    }
+
+    [HttpGet]
+    public ActionResult<IEnumerable<Member>> GetMembersForClub(int ClubId)
     {
         return _dbContext.Members.Include(m => m.Club).ToList();
     }
