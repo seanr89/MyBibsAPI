@@ -35,7 +35,8 @@ public static class DbSeeding
         DateTime date = DateTime.Now;
         var club = new Club("IT Science Park", date);
 
-        club.AddMember(new Member("srafferty89@gmail.com", "Sean", "Rafferty"));
+        club.AddMember(new Member("srafferty89@gmail.com", "Sean", "Rafferty", 50));
+        club.AddMember(new Member("frankydon@gmail.com", "Francy", "Donald", 99));
         // club.AddMember(new Member("francis.donald@randox.com", "Francis Donald", true));
         // club.AddMember(new Member("ross.bratton@randox.com", "Ross Bratton", true));
         // club.AddMember(new Member("conor.devlin@randox.com", "Conor Devlin", true));

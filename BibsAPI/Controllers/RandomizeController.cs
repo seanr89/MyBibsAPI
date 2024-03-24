@@ -51,11 +51,18 @@ public class RandomizeController : ControllerBase
             Player player = new Player
             {
                 Name = member.FullName(),
-                Rating = 50
+                Rating = member.Rating,
+                MemberId = member.Id
             };
             game.AllPlayers.Add(player);
         }
 
         return Ok(game);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateRatingsGame(CreateGameDTO gameDTO)
+    {
+        throw new NotImplementedException();
     }
 }
