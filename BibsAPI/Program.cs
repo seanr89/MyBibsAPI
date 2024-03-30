@@ -26,8 +26,6 @@ builder.Services.AddControllers()
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-//DI Layer
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

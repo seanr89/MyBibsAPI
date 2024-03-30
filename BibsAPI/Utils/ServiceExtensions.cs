@@ -15,8 +15,8 @@ public static class ServiceExtensions
             var context = provider.GetRequiredService<AppDbContext>();
             var opt = provider.GetRequiredService<IOptions<PostgresSettings>>().Value;
 
-            // if(opt.Migrate)
-            //     context.Database.Migrate();
+            if(opt.Migrate)
+                context.Database.Migrate();
 
             if(opt.SeedData)
                 DbSeeding.TryRunSeed(context).Wait();

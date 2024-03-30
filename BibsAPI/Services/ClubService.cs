@@ -21,7 +21,8 @@ public class ClubService
     public async Task<Club?> GetClubAsync(int id)
     {
         return await _dbContext.Clubs
-            .FindAsync(id);
+            .Include(c => c.Members)
+            .FirstAsync(c => c.Id == id);
     }
 
     /// <summary>

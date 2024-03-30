@@ -37,7 +37,7 @@ public static class DbSeeding
 
         club.AddMember(new Member("srafferty89@gmail.com", "Sean", "Rafferty", 50));
         club.AddMember(new Member("frankydon@gmail.com", "Francy", "Donald", 99));
-        // club.AddMember(new Member("francis.donald@randox.com", "Francis Donald", true));
+        club.AddMember(new Member("wee.dev@randox.com", "Conor" , "Devlin", 88));
         // club.AddMember(new Member("ross.bratton@randox.com", "Ross Bratton", true));
         // club.AddMember(new Member("conor.devlin@randox.com", "Conor Devlin", true));
         // club.AddMember(new Member("steven.kennedy@randox.com", "Steve Kennedy", true));
