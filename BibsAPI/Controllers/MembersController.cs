@@ -19,7 +19,8 @@ public class MembersController : ControllerBase{
         return _dbContext.Members.Include(m => m.Club).ToList();
     }
 
-    [HttpGet]
+    // GET: api/Members/5
+    [HttpGet("{ClubId}")]
     public ActionResult<IEnumerable<Member>> GetMembersForClub(int ClubId)
     {
         return _dbContext.Members.Include(m => m.Club).ToList();

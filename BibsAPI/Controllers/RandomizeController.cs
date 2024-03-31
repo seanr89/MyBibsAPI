@@ -31,6 +31,12 @@ public class RandomizeController : ControllerBase
         return game;
     }
 
+
+    /// <summary>
+    /// Creates a basic game using the provided game DTO.
+    /// </summary>
+    /// <param name="gameDTO">The game DTO containing the necessary information for creating the game.</param>
+    /// <returns>An asynchronous task that represents the operation and holds the result of the action.</returns>
     [HttpPost]
     public async Task<IActionResult> CreateBasicGame(CreateGameDTO gameDTO)
     {

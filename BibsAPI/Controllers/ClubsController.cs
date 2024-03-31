@@ -35,7 +35,7 @@ namespace MyBibsAPI
             return club;
         }
 
-        // POST: api/Clubs
+        // POST: api/Clubs/CreateClub
         [HttpPost("CreateClub")]
         public ActionResult<Club> CreateClub(Club club)
         {
@@ -43,7 +43,7 @@ namespace MyBibsAPI
             return CreatedAtAction(nameof(GetClub), new { id = created.Id }, club);
         }
 
-        // POST: api/Clubs/5
+        // POST: api/Clubs/AddMemberToClub
         [HttpPost("AddMemberToClub")]
         public async Task<IActionResult> AddMemberToClub(Member member)
         {

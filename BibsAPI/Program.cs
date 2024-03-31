@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,9 +39,6 @@ app.UseHttpsRedirection();
 ServiceExtensions.RunDBMigration(builder.Services);
 
 app.UseRouting();
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllers();
-});
+app.MapControllers();
 
 app.Run();
