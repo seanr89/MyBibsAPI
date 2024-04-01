@@ -6,6 +6,7 @@ public static class DbSeeding
 {
     public static async Task TryRunSeed(AppDbContext context)
     {
+        Console.WriteLine("TryRunSeed");
         if (!context.Clubs.Any())
         {
             await SeedClubs(context);
@@ -37,12 +38,12 @@ public static class DbSeeding
 
         club.AddMember(new Member("srafferty89@gmail.com", "Sean", "Rafferty", 50));
         club.AddMember(new Member("frankydon@gmail.com", "Francy", "Donald", 99));
-        club.AddMember(new Member("wee.dev@randox.com", "Conor" , "Devlin", 88));
-        // club.AddMember(new Member("ross.bratton@randox.com", "Ross Bratton", true));
-        // club.AddMember(new Member("conor.devlin@randox.com", "Conor Devlin", true));
-        // club.AddMember(new Member("steven.kennedy@randox.com", "Steve Kennedy", true));
-        // club.AddMember(new Member("rory.corr@randox.com", "Rory Corr", true));
-        // club.AddMember(new Member("michael.hayes@randox.com", "Michael Hayes", true));
+        club.AddMember(new Member("wee.dev@email.com", "Conor" , "Devlin", 88));
+        club.AddMember(new Member("ross.bratton@email.com", "Ross", "Bratton", 74));
+        club.AddMember(new Member("test.user@email.com", "Test", "User", 100));
+        club.AddMember(new Member("test.user2@email.com", "Test", "User2", 50));
+        club.AddMember(new Member("test.user3@email.com", "Test", "User3", 40));
+        club.AddMember(new Member("test.user4@email.com", "Test", "User4", 15));
 
         return club;
     }
