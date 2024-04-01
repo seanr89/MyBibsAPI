@@ -1,10 +1,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
+# EXPOSE 80
+# EXPOSE 443
 
 # Step 2: Copy project file to the ./ container folder
-COPY *.csproj ./
+# COPY *.csproj ./
+COPY . ./
 # Step 3: Run a restore to download dependencies
 RUN dotnet restore
 
