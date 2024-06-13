@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace MyBibsAPI
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class ClubsController : ControllerBase
     {
         private readonly ClubService _clubService;
