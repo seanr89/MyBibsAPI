@@ -4,3 +4,5 @@
 # Accept: application/json
 
 ###
+GET {{BibsAPI_HostAddress}}/clubs/GetClubs
+Accept: application/json

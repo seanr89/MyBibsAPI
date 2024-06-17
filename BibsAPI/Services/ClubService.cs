@@ -14,19 +14,21 @@ public class ClubService
     public async Task<IEnumerable<Club>> GetClubsAsync()
     {
         return await _dbContext.Clubs
-            .Include(c => c.Members)
+            //.Include(c => c.Members)
             .ToListAsync();
     }
 
     public async Task<Club?> GetClubAsync(int id)
     {
         // Retrieves a club from the database based on the specified ID.
-        // If a club with the given ID is found, it includes the associated members.
+        // If a club with the given ID is found, it includes the associated members
+        // and matches.
         // Returns the club if found; otherwise, returns null.
 
         return await _dbContext.Clubs
             .Include(c => c.Members)
-            .FirstAsync(c => c.Id == id);
+            .Include(c => c.Matches)
+            .FirstOrDefaultAsync(c => c.Id == id);
     }
 
     /// <summary>

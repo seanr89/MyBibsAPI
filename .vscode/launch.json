@@ -5,7 +5,7 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": ".NET Core Launch (web)",
+            "name": "API Debug",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
@@ -13,6 +13,7 @@
             "args": [],
             "cwd": "${workspaceFolder}/BibsAPI",
             "stopAtEntry": false,
+            "launchBrowser": false,
             "serverReadyAction": {
                 "action": "openExternally",
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
@@ -24,7 +25,9 @@
                 "/Views": "${workspaceFolder}/Views"
             },
             "logging": {
-                "moduleLoad": false
+                "moduleLoad": false,
+                "trace": false,
+                "engineLogging": false
             }
         },
         {

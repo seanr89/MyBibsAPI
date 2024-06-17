@@ -15,13 +15,13 @@ namespace MyBibsAPI
 
         // GET: api/Health
         [HttpGet]
-        public ActionResult<string> Healthy()
+        public ActionResult<string> HealthCheck()
         {
             return "Healthy";
         }
 
         [HttpGet]
-        public ActionResult<string> HealthyDb()
+        public ActionResult<string> DbHealthCheck()
         {
             var connected = _dbContext.Database.CanConnect();
 

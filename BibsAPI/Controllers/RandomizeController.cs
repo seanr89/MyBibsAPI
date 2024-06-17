@@ -15,7 +15,7 @@ public class RandomizeController : ControllerBase
     }
 
     /// <summary>
-    /// Basic/Crappy randomizer
+    /// Basic/Crappy Randomizer
     /// </summary>
     /// <param name="game"></param>
     /// <returns></returns> <summary>

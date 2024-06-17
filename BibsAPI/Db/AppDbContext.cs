@@ -27,5 +27,11 @@ public class AppDbContext : DbContext
             .WithOne(e => e.Club)
             .HasForeignKey(e => e.ClubId)
             .IsRequired();
+
+        // modelBuilder.Entity<Club>()
+        //     .HasMany(e => e.Matches)
+        //     .WithOne(e => e.Club)
+        //     .HasForeignKey(e => e.ClubId)
+        //     .IsRequired();
     }
 }

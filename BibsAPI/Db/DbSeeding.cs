@@ -34,7 +34,7 @@ public static class DbSeeding
     static Club CreateDefaultClubWithMembers()
     {
         DateTime date = DateTime.Now;
-        var club = new Club("IT Science Park", date);
+        Club club = new("IT Science Park", date);
 
         club.AddMember(new Member("srafferty89@gmail.com", "Sean", "Rafferty", 50));
         club.AddMember(new Member("frankydon@gmail.com", "Francy", "Donald", 99));
@@ -45,7 +45,24 @@ public static class DbSeeding
         club.AddMember(new Member("test.user3@email.com", "Test", "User3", 40));
         club.AddMember(new Member("test.user4@email.com", "Test", "User4", 15));
 
+        var matches = CreateDefaultMatches();
+        foreach (var match in matches)
+        {
+            club?.Matches?.Add(match);
+        }
         return club;
+    }
+
+    static IEnumerable<Match> CreateDefaultMatches()
+    {
+        var matches = new List<Match>
+        {
+            new Match { Date = DateTime.UtcNow, Complete = false },
+            new Match { Date = DateTime.UtcNow.AddDays(5), Complete = false },
+            new Match { Date = DateTime.UtcNow.AddDays(-5), Complete = true },
+            new Match { Date = DateTime.UtcNow.AddDays(-10), Complete = true },
+        };
+        return matches;
     }
 
     #endregion
