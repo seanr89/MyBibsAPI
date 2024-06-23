@@ -9,12 +9,4 @@ public record Game
     public List<Player>? TeamTwo { get; set; }
 
     public List<Player>? AllPlayers { get; set; }
-
-}
-
-public record Player
-{
-    public string Name { get; init; }
-    public double Rating { get; init; } = 50;
-    public Guid MemberId { get; set; }
 }

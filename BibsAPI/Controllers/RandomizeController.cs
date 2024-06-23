@@ -7,11 +7,13 @@ public class RandomizeController : ControllerBase
 {
     private readonly ILogger<RandomizeController> _logger;
     private readonly ClubService _clubService;
+    private readonly RandomService _randomService;
     public RandomizeController(ILogger<RandomizeController> logger,
-        ClubService clubService)
+        ClubService clubService, RandomService randomService)
     {
         _logger = logger;
         _clubService = clubService;
+        _randomService = randomService;
     }
 
     /// <summary>
@@ -24,10 +26,12 @@ public class RandomizeController : ControllerBase
     {
         _logger.LogInformation("Randomizing players");
         var random = new Random();
-        var randomizedPlayers = game.AllPlayers.OrderBy(p => random.Next()).ToList();
+        var randomizedPlayers = game.AllPlayers?.OrderBy(p => random.Next()).ToList();
+        if(randomizedPlayers == null)
+            return BadRequest("No players to randomize");
         game.AllPlayers = randomizedPlayers;
-        game.TeamOne = randomizedPlayers.Take(randomizedPlayers.Count / 2).ToList();
-        game.TeamTwo = randomizedPlayers.Skip(randomizedPlayers.Count / 2).ToList();
+        game.TeamOne = _randomService.SetTeamForPlayers(randomizedPlayers.Take(randomizedPlayers.Count / 2).ToList(), "Team One");
+        game.TeamTwo = _randomService.SetTeamForPlayers(randomizedPlayers.Skip(randomizedPlayers.Count / 2).ToList(), "Team Two");
         return game;
     }
 

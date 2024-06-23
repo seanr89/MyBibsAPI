@@ -7,9 +7,11 @@ public class Match
 {
     public int Id { get; set; }
     public DateTime Date { get; set; }
+    public string Location { get; set; }
     public bool Complete { get; set; }
     public int ClubId { get; set; }
     public Club Club { get; set; }
+    public ICollection<Player>? Players { get; set; } = [];
 
     public Match()
     {
