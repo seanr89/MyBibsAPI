@@ -27,7 +27,7 @@ public class ClubService
 
         return await _dbContext.Clubs
             .Include(c => c.Members)
-            .Include(c => c.Matches)
+            //.Include(c => c.Matches)
             .FirstOrDefaultAsync(c => c.Id == id);
     }
 

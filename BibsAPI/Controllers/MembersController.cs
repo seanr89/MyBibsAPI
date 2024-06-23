@@ -5,24 +5,26 @@ using Microsoft.EntityFrameworkCore;
 [Route("api/[controller]/[action]")]
 public class MembersController : ControllerBase{
 
-    private readonly AppDbContext _dbContext;
-    public MembersController(AppDbContext dbContext)
+    private readonly MemberService _memberService;
+    public MembersController(MemberService memberService)
     {
-        _dbContext = dbContext;
+        _memberService = memberService;
     }
 
 
     // GET: api/Members
     [HttpGet]
-    public ActionResult<IEnumerable<Member>> GetMembers()
+    public async Task<IActionResult> GetMembers()
     {
-        return _dbContext.Members.Include(m => m.Club).ToList();
+        var result = await _memberService.GetMembersAsync();
+        return Ok(result);
     }
 
     // GET: api/Members/5
     [HttpGet("{ClubId}")]
-    public ActionResult<IEnumerable<Member>> GetMembersForClub(int ClubId)
+    public async Task<IActionResult> GetMembersForClub(int ClubId)
     {
-        return _dbContext.Members.Include(m => m.Club).ToList();
+        var result = _memberService.GetMembersForClubAsync(ClubId).Result;
+        return Ok(result);
     }
 }

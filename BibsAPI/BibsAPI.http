@@ -3,6 +3,18 @@
 # GET {{BibsAPI_HostAddress}}/weatherforecast/
 # Accept: application/json
 
+### health check
+GET {{BibsAPI_HostAddress}}/health/HealthCheck
+Accept: application/json
+
+
+GET {{BibsAPI_HostAddress}}/health/DbHealthCheck
+Accept: application/json
+
 ###
 GET {{BibsAPI_HostAddress}}/clubs/GetClubs
+Accept: application/json
+
+###
+GET {{BibsAPI_HostAddress}}/clubs/GetClub/2
 Accept: application/json

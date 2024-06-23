@@ -15,6 +15,11 @@ public class MatchService
         return await _dbContext.Matches.ToListAsync();
     }
 
+    public async Task<IEnumerable<Match>> GetMatchesForClub(int cludId)
+    {
+        return await _dbContext.Matches.Where(m => m.ClubId == cludId).ToListAsync();
+    }
+    
     public async Task<Match?> GetMatch(int id)
     {
         return await _dbContext.Matches.FirstOrDefaultAsync(m => m.Id == id);

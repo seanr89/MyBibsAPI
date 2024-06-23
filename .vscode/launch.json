@@ -13,7 +13,6 @@
             "args": [],
             "cwd": "${workspaceFolder}/BibsAPI",
             "stopAtEntry": false,
-            "launchBrowser": false,
             "serverReadyAction": {
                 "action": "openExternally",
                 "pattern": "\\bNow listening on:\\s+(https?://\\S+)"
