@@ -7,6 +7,5 @@ public record Game
     public DateTime EventDate { get; init; }
     public List<Player>? TeamOne { get; set; }
     public List<Player>? TeamTwo { get; set; }
-
     public List<Player>? AllPlayers { get; set; }
 }

@@ -13,6 +13,7 @@ public class AppDbContext : DbContext
     public DbSet<Club> Clubs { get; set; } = null!;
     public DbSet<Member> Members { get; set; } = null!;
     public DbSet<Match> Matches { get; set; } = null!;
+    public DbSet<Player> Players { get; set; } = null!;
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
