@@ -47,7 +47,7 @@ namespace MyBibsAPI
         [HttpPost("AddMemberToClub")]
         public async Task<IActionResult> AddMemberToClub(Member member)
         {
-            var created = _clubService.AddMemberToClub(member).Result;
+            var created = await _clubService.AddMemberToClub(member);
             return Ok("Member added to club");
         }
 

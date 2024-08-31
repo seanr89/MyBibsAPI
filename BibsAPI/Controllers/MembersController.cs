@@ -24,7 +24,7 @@ public class MembersController : ControllerBase{
     [HttpGet("{ClubId}")]
     public async Task<IActionResult> GetMembersForClub(int ClubId)
     {
-        var result = _memberService.GetMembersForClubAsync(ClubId).Result;
+        var result = await _memberService.GetMembersForClubAsync(ClubId);
         return Ok(result);
     }
 }
