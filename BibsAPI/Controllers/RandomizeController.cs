@@ -29,6 +29,8 @@ public class RandomizeController : ControllerBase
         var randomizedPlayers = game.AllPlayers?.OrderBy(p => random.Next()).ToList();
         if(randomizedPlayers == null)
             return BadRequest("No players to randomize");
+        
+        // Add all players to the game
         game.AllPlayers = randomizedPlayers;
         game.TeamOne = _randomService.SetTeamForPlayers(randomizedPlayers.Take(randomizedPlayers.Count / 2).ToList(), "Team One");
         game.TeamTwo = _randomService.SetTeamForPlayers(randomizedPlayers.Skip(randomizedPlayers.Count / 2).ToList(), "Team Two");
@@ -66,6 +68,8 @@ public class RandomizeController : ControllerBase
             };
             game.AllPlayers.Add(player);
         }
+
+        //TODO do we need to save the game?
 
         return Ok(game);
     }
