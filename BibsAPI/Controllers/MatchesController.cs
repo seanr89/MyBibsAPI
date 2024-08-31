@@ -29,4 +29,21 @@ public class MatchesController : ControllerBase
         }
         return Ok(match);
     }
+
+    // GET: api/Matches/GetMatchesForClub/5
+    [HttpGet("{ClubId}")]
+    public async Task<IActionResult> GetMatchesForClub(int ClubId)
+    {
+        var result = await _matchService.GetMatchesForClub(ClubId);
+        return Ok(result);
+    }
+
+    // POST: api/Matches/CreateMatch
+    [HttpPost]
+    public async Task<IActionResult> CreateMatch([FromBody] Match match)
+    {
+        var result = await _matchService.CreateMatch(match);
+        return Ok(result);
+    }
+
 }
