@@ -14,11 +14,11 @@ clean-rebuild: ## Clean and rebuild the project
 
 docker-image: ## Build the docker image
 	@echo "Building the docker image"
-	docker build -t dotnet-core-api .
+	docker build -t bibs-api .
 
 docker-postgres: ## Run the postgres docker container
 	@echo "Running the postgres docker container"
-	docker run --name postgres -e POSTGRES_PASSWORD=postgres -d -p 5432:5432 postgres
+	docker run --name postgres -e POSTGRES_USER=postgres_user -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=bibsDb -d -p 5432:5432 postgres
 
 post-script: ## Run the post-script to create the database
 	@echo "Running the post-script to create the database"
