@@ -11,6 +11,10 @@ public class Match
     public bool Complete { get; set; }
     public int ClubId { get; set; }
     public Club Club { get; set; }
+    /// <summary>
+    /// Players are individuals selected with a team record tagged
+    /// </summary>
+    /// <value></value>
     public ICollection<Player>? Players { get; set; } = [];
 
     public Match()
